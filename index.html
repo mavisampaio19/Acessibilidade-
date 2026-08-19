@@ -3,49 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Segurança Digital para a Terceira Idade</title>
+  <title>Guia de Segurança Digital</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Barra de Acessibilidade Superior -->
   <div class="barra-acessibilidade" aria-label="Ferramentas de Acessibilidade">
-    <div>
-      <span>Tamanho do Texto:</span>
-      <button onclick="alterarTamanhoFonte(2)" aria-label="Aumentar tamanho do texto">A+</button>
-      <button onclick="alterarTamanhoFonte(-2)" aria-label="Diminuir tamanho do texto">A-</button>
+    <div class="grupo-botoes-acessibilidade">
+      <span>Controle de Leitura:</span>
+      <button id="btnVoz">🔊 Ouvir Página</button>
+      <button id="btnPararVoz" class="btn-parar-leitura" onclick="finalizarLeitura()">⏹️ Parar Áudio</button>
     </div>
-    <div>
-      <button onclick="alternarModoContraste()" aria-label="Alternar para modo alto contraste">Alto Contraste ◐</button>
+    <div class="grupo-botoes-acessibilidade">
+      <span>Tamanho do Texto:</span>
+      <button onclick="alterarTamanhoFonte(2)">A+</button>
+      <button onclick="alterarTamanhoFonte(-2)">A-</button>
+      <button onclick="alternarModoContraste()">Alto Contraste ◐</button>
     </div>
   </div>
 
-  <!-- Banner Principal -->
-  <header class="banner-destaque">
-    <h1>Segurança Digital para a Terceira Idade</h1>
-    <p>Aprenda a usar a internet com calma, proteção e autonomia no seu dia a dia.</p>
-    <button class="botao-ajuda-banner" onclick="abrirJanelaAjuda()">
-      🚨 Preciso de Ajuda / Caí em um Golpe
-    </button>
-  </header>
+  <!-- CONTEÚDO PRINCIPAL ENVOLVIDO NA TAG MAIN -->
+  <main>
+    <!-- Banner Principal -->
+    <header class="banner-destaque">
+      <h1>Guia de Segurança Digital</h1>
+      <p>Aprenda a usar a internet com calma, proteção e autonomia no seu dia a dia.</p>
+      <button class="botao-ajuda-banner" onclick="abrirJanelaAjuda()">
+        🚨 Preciso de Ajuda / Caí em um Golpe
+      </button>
+    </header>
 
-  <div class="conteudo-principal">
+    <div class="conteudo-principal">
 
-    <!-- Navegação Principal -->
-    <nav role="tablist">
-      <button class="ativo" onclick="exibirAba('dicas')" id="aba-dicas">Dicas Importantes</button>
-      <button onclick="exibirAba('direitos')" id="aba-direitos">Direitos na Internet</button>
-      <button onclick="exibirAba('suspeitas')" id="aba-suspeitas">Como Saber se é Golpe</button>
-    </nav>
+      <!-- Navegação Principal -->
+      <nav role="tablist">
+        <button class="ativo" onclick="exibirAba('dicas')" id="aba-dicas">Dicas Importantes</button>
+        <button onclick="exibirAba('direitos')" id="aba-direitos">Direitos na Internet</button>
+        <button onclick="exibirAba('suspeitas')" id="aba-suspeitas">Como Saber se é Golpe</button>
+      </nav>
 
-    <!-- SEÇÃO 1: DICAS IMPORTANTES -->
-    <main id="dicas" class="conteudo-secao ativo">
-      <div class="cartao">
-        <div class="grupo-botoes-audio">
-          <button class="botao-audio" onclick="lerTextoAudio('texto-dicas')">🔊 Ouvir esta seção</button>
-          <button class="botao-audio-parar" onclick="pararTextoAudio()" aria-label="Parar leitura em áudio">⏹️ Parar áudio</button>
-        </div>
-        <div id="texto-dicas">
+      <!-- SEÇÃO 1: DICAS IMPORTANTES -->
+      <section id="dicas" class="conteudo-secao ativo">
+        <div class="cartao">
           <h2>4 Dicas Importantes de Segurança</h2>
           <p>Mantenha estas atitudes simples sempre em mente ao usar seu celular ou computador:</p>
           
@@ -71,17 +71,11 @@
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </section>
 
-    <!-- SEÇÃO 2: DIREITOS NA INTERNET -->
-    <section id="direitos" class="conteudo-secao">
-      <div class="cartao">
-        <div class="grupo-botoes-audio">
-          <button class="botao-audio" onclick="lerTextoAudio('texto-direitos')">🔊 Ouvir esta seção</button>
-          <button class="botao-audio-parar" onclick="pararTextoAudio()" aria-label="Parar leitura em áudio">⏹️ Parar áudio</button>
-        </div>
-        <div id="texto-direitos">
+      <!-- SEÇÃO 2: DIREITOS NA INTERNET -->
+      <section id="direitos" class="conteudo-secao">
+        <div class="cartao">
           <h2>Seus Direitos na Internet</h2>
           <p>A internet não é uma "terra sem leis". Assim como na vida presencial, você possui direitos garantidos por leis brasileiras (como o Marco Civil da Internet e a Lei Geral de Proteção de Dados):</p>
 
@@ -95,17 +89,11 @@
             <p><strong>🚫 Direito ao Cancelamento e Exclusão:</strong> Você pode pedir o cancelamento de cadastros e exigir que empresas apaguem seus dados pessoais quando não quiser mais utilizar um serviço.</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SEÇÃO 3: COMO SABER SE É GOLPE -->
-    <section id="suspeitas" class="conteudo-secao">
-      <div class="cartao">
-        <div class="grupo-botoes-audio">
-          <button class="botao-audio" onclick="lerTextoAudio('texto-suspeitas')">🔊 Ouvir esta seção</button>
-          <button class="botao-audio-parar" onclick="pararTextoAudio()" aria-label="Parar leitura em áudio">⏹️ Parar áudio</button>
-        </div>
-        <div id="texto-suspeitas">
+      <!-- SEÇÃO 3: COMO SABER SE É GOLPE -->
+      <section id="suspeitas" class="conteudo-secao">
+        <div class="cartao">
           <h2>Como Saber se Estou Caindo em um Golpe?</h2>
           <p>Os golpistas usam truques psicológicos para enganar as pessoas. Fique atento a estas <strong>atitudes suspeitas</strong> que costumam iniciar um golpe:</p>
 
@@ -129,35 +117,36 @@
             <p>Se alguém pedir um código de números que acabou de chegar no seu celular por SMS, pare! Esse código dá acesso ao seu WhatsApp ou aplicativo do banco.</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-  </div>
-
-  <!-- MODAL DE EMERGÊNCIA -->
-  <div id="janelaModalAjuda" class="janela-modal-ajuda" aria-modal="true" role="dialog">
-    <div class="conteudo-modal">
-      <h2>🚨 O que fazer se caiu em um golpe:</h2>
-      <p style="font-weight: bold; margin-bottom: 15px;">Mantenha a calma e siga estas orientações:</p>
-      
-      <ol style="text-align: left; margin: 0 auto 20px 20px;">
-        <li style="margin-bottom: 10px;">Ligue imediatamente para o seu <strong>Banco</strong> e peça para bloquear senhas e cartões.</li>
-        <li style="margin-bottom: 10px;">Avise um parente ou amigo de confiança.</li>
-        <li style="margin-bottom: 10px;">Faça um Boletim de Ocorrência na Polícia.</li>
-      </ol>
-
-      <a href="tel:190" class="botao-ligar">Ligar para a Polícia (190)</a>
-      <a href="tel:100" class="botao-ligar" style="background-color: var(--violeta-principal);">Disque Direitos Humanos (100)</a>
-
-      <button class="botao-fechar-modal" onclick="fecharJanelaAjuda()">Fechar esta janela</button>
     </div>
-  </div>
+
+    <!-- MODAL DE EMERGÊNCIA -->
+    <div id="janelaModalAjuda" class="janela-modal-ajuda" aria-modal="true" role="dialog">
+      <div class="conteudo-modal">
+        <h2>🚨 O que fazer se caiu em um golpe:</h2>
+        <p style="font-weight: bold; margin-bottom: 15px;">Mantenha a calma e siga estas orientações:</p>
+        
+        <ol style="text-align: left; margin: 0 auto 20px 20px;">
+          <li style="margin-bottom: 10px;">Ligue imediatamente para o seu <strong>Banco</strong> e peça para bloquear senhas e cartões.</li>
+          <li style="margin-bottom: 10px;">Avise um parente ou amigo de confiança.</li>
+          <li style="margin-bottom: 10px;">Faça um Boletim de Ocorrência na Polícia.</li>
+        </ol>
+
+        <a href="tel:190" class="botao-ligar">Ligar para a Polícia (190)</a>
+        <a href="tel:100" class="botao-ligar" style="background-color: var(--violeta-principal);">Disque Direitos Humanos (100)</a>
+
+        <button class="botao-fechar-modal" onclick="fecharJanelaAjuda()">Fechar esta janela</button>
+      </div>
+    </div>
+  </main>
 
   <footer>
     <p>Aplicativo Educativo de Segurança Digital • Feito para proteger você</p>
   </footer>
 
   <script>
+    // OUTRAS FUNÇÕES DA PÁGINA
     let tamanhoFonteAtual = 22;
     function alterarTamanhoFonte(variacao) {
       tamanhoFonteAtual += variacao;
@@ -171,7 +160,7 @@
     }
 
     function exibirAba(identificadorAba) {
-      pararTextoAudio();
+      finalizarLeitura();
       const secoes = document.querySelectorAll('.conteudo-secao');
       secoes.forEach(secao => secao.classList.remove('ativo'));
 
@@ -190,24 +179,38 @@
       document.getElementById('janelaModalAjuda').style.display = 'none';
     }
 
-    function lerTextoAudio(identificadorElemento) {
+    // ==========================================
+    // LEITURA DE TELA (SPEECH SYNTHESIS)
+    // ==========================================
+
+    let lendo = false;
+    const btnLeitura = document.getElementById("btnVoz");
+
+    btnLeitura.addEventListener("click", lerEmVozAlta);
+
+    function lerEmVozAlta() {
       if ('speechSynthesis' in window) {
-        const conteudoTexto = document.getElementById(identificadorElemento).innerText;
-        const mensagemAudio = new SpeechSynthesisUtterance();
-        mensagemAudio.text = conteudoTexto;
-        mensagemAudio.lang = 'pt-BR';
-        mensagemAudio.rate = 0.85;
         window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(mensagemAudio);
-      } else {
-        alert("O seu navegador não possui suporte para leitura em áudio.");
       }
+
+      let conteudo = document.querySelector("main");
+      let texto = conteudo.innerText;
+
+      let fala = new SpeechSynthesisUtterance(texto);
+
+      fala.lang = "pt-BR";
+      fala.rate = 0.9;
+      fala.onend = finalizarLeitura;
+
+      window.speechSynthesis.speak(fala);
+      lendo = true;
     }
 
-    function pararTextoAudio() {
+    function finalizarLeitura() {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
       }
+      lendo = false;
     }
   </script>
 </body>

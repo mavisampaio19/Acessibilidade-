@@ -49,6 +49,12 @@ body {
   border-bottom: 3px solid var(--lilas-destaque);
 }
 
+.grupo-botoes-acessibilidade {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .barra-acessibilidade button {
   background-color: #ffffff;
   color: var(--violeta-principal);
@@ -58,6 +64,12 @@ body {
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.btn-parar-leitura {
+  background-color: var(--vermelho-alerta) !important;
+  color: #ffffff !important;
+  border-color: var(--vermelho-alerta) !important;
 }
 
 .banner-destaque {
@@ -87,7 +99,6 @@ body {
   font-weight: bold;
   padding: 18px 30px;
   border-radius: 50px;
-  text-decoration: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   border: 3px solid #ffffff;
   cursor: pointer;
@@ -173,37 +184,6 @@ nav button.ativo, nav button:hover {
   color: var(--violeta-principal);
   font-size: 1.4rem;
   margin-bottom: 8px;
-}
-
-.grupo-botoes-audio {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.botao-audio {
-  background-color: var(--lilas-claro);
-  color: var(--violeta-principal);
-  border: 2px solid var(--violeta-principal);
-  padding: 10px 16px;
-  border-radius: 30px;
-  font-size: 1.05rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Botão Pequeno para Parar o Áudio */
-.botao-audio-parar {
-  background-color: var(--vermelho-alerta);
-  color: #ffffff;
-  border: 2px solid var(--vermelho-alerta);
-  padding: 10px 14px;
-  border-radius: 30px;
-  font-size: 0.95rem;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 .conteudo-secao {
