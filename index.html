@@ -1,13 +1,9 @@
-HTML
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Segurança Digital para a Terceira Idade</title>
-  <!-- Vínculo com o arquivo CSS separado -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,11 +20,10 @@ HTML
     </div>
   </div>
 
-  <!-- INÍCIO: Banner Principal -->
+  <!-- Banner Principal -->
   <header class="banner-destaque">
     <h1>Segurança Digital para a Terceira Idade</h1>
     <p>Aprenda a usar a internet com calma, proteção e autonomia no seu dia a dia.</p>
-    <!-- Botão de Ajuda Funcional no Banner -->
     <button class="botao-ajuda-banner" onclick="abrirJanelaAjuda()">
       🚨 Preciso de Ajuda / Caí em um Golpe
     </button>
@@ -43,10 +38,13 @@ HTML
       <button onclick="exibirAba('suspeitas')" id="aba-suspeitas">Como Saber se é Golpe</button>
     </nav>
 
-    <!-- SEÇÃO 1: DICAS IMPORTANTES (4 DICAS) -->
+    <!-- SEÇÃO 1: DICAS IMPORTANTES -->
     <main id="dicas" class="conteudo-secao ativo">
       <div class="cartao">
-        <button class="botao-audio" onclick="lerTextoAudio('texto-dicas')">🔊 Ouvir esta seção</button>
+        <div class="grupo-botoes-audio">
+          <button class="botao-audio" onclick="lerTextoAudio('texto-dicas')">🔊 Ouvir esta seção</button>
+          <button class="botao-audio-parar" onclick="pararTextoAudio()" aria-label="Parar leitura em áudio">⏹️ Parar áudio</button>
+        </div>
         <div id="texto-dicas">
           <h2>4 Dicas Importantes de Segurança</h2>
           <p>Mantenha estas atitudes simples sempre em mente ao usar seu celular ou computador:</p>
@@ -79,7 +77,10 @@ HTML
     <!-- SEÇÃO 2: DIREITOS NA INTERNET -->
     <section id="direitos" class="conteudo-secao">
       <div class="cartao">
-        <button class="botao-audio" onclick="lerTextoAudio('texto-direitos')">🔊 Ouvir esta seção</button>
+        <div class="grupo-botoes-audio">
+          <button class="botao-audio" onclick="lerTextoAudio('texto-direitos')">🔊 Ouvir esta seção</button>
+          <button class="botao-audio-parar" onclick="pararTextoAudio()" aria-label="Parar leitura em áudio">⏹️ Parar áudio</button>
+        </div>
         <div id="texto-direitos">
           <h2>Seus Direitos na Internet</h2>
           <p>A internet não é uma "terra sem leis". Assim como na vida presencial, você possui direitos garantidos por leis brasileiras (como o Marco Civil da Internet e a Lei Geral de Proteção de Dados):</p>
@@ -97,10 +98,13 @@ HTML
       </div>
     </section>
 
-    <!-- SEÇÃO 3: COMO SABER SE ESTOU CAINDO EM UM GOLPE -->
+    <!-- SEÇÃO 3: COMO SABER SE É GOLPE -->
     <section id="suspeitas" class="conteudo-secao">
       <div class="cartao">
-        <button class="botao-audio" onclick="lerTextoAudio('texto-suspeitas')">🔊 Ouvir esta seção</button>
+        <div class="grupo-botoes-audio">
+          <button class="botao-audio" onclick="lerTextoAudio('texto-suspeitas')">🔊 Ouvir esta seção</button>
+          <button class="botao-audio-parar" onclick="pararTextoAudio()" aria-label="Parar leitura em áudio">⏹️ Parar áudio</button>
+        </div>
         <div id="texto-suspeitas">
           <h2>Como Saber se Estou Caindo em um Golpe?</h2>
           <p>Os golpistas usam truques psicológicos para enganar as pessoas. Fique atento a estas <strong>atitudes suspeitas</strong> que costumam iniciar um golpe:</p>
@@ -130,7 +134,7 @@ HTML
 
   </div>
 
-  <!-- MODAL / JANELA DE EMERGÊNCIA (Acionada pelo Botão de Ajuda) -->
+  <!-- MODAL DE EMERGÊNCIA -->
   <div id="janelaModalAjuda" class="janela-modal-ajuda" aria-modal="true" role="dialog">
     <div class="conteudo-modal">
       <h2>🚨 O que fazer se caiu em um golpe:</h2>
@@ -153,9 +157,7 @@ HTML
     <p>Aplicativo Educativo de Segurança Digital • Feito para proteger você</p>
   </footer>
 
-  <!-- Scripts JavaScript em Português-BR -->
   <script>
-    // Controle do Tamanho da Fonte
     let tamanhoFonteAtual = 22;
     function alterarTamanhoFonte(variacao) {
       tamanhoFonteAtual += variacao;
@@ -164,13 +166,12 @@ HTML
       document.body.style.fontSize = tamanhoFonteAtual + 'px';
     }
 
-    // Alternar Alto Contraste
     function alternarModoContraste() {
       document.body.classList.toggle('alto-contraste');
     }
 
-    // Navegação por Abas
     function exibirAba(identificadorAba) {
+      pararTextoAudio();
       const secoes = document.querySelectorAll('.conteudo-secao');
       secoes.forEach(secao => secao.classList.remove('ativo'));
 
@@ -181,7 +182,6 @@ HTML
       document.getElementById('aba-' + identificadorAba).classList.add('ativo');
     }
 
-    // Funcionalidade da Janela de Ajuda / Emergência
     function abrirJanelaAjuda() {
       document.getElementById('janelaModalAjuda').style.display = 'flex';
     }
@@ -190,18 +190,23 @@ HTML
       document.getElementById('janelaModalAjuda').style.display = 'none';
     }
 
-    // Leitor de Áudio (Sintetizador Nativo)
     function lerTextoAudio(identificadorElemento) {
       if ('speechSynthesis' in window) {
         const conteudoTexto = document.getElementById(identificadorElemento).innerText;
         const mensagemAudio = new SpeechSynthesisUtterance();
         mensagemAudio.text = conteudoTexto;
         mensagemAudio.lang = 'pt-BR';
-        mensagemAudio.rate = 0.85; // Leitura pausada para fácil compreensão
+        mensagemAudio.rate = 0.85;
         window.speechSynthesis.cancel();
         window.speechSynthesis.speak(mensagemAudio);
       } else {
         alert("O seu navegador não possui suporte para leitura em áudio.");
+      }
+    }
+
+    function pararTextoAudio() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
       }
     }
   </script>
