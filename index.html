@@ -186,30 +186,34 @@
 
     btnLeitura.addEventListener("click", lerEmVozAlta);
 
-    function lerEmVozAlta() {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
+function lerEmVozAlta() {
+  // Para qualquer leitura que já esteja tocando antes de iniciar
+  finalizarLeitura();
 
-      let conteudo = document.querySelector("main");
-      let texto = conteudo.innerText;
+  let conteudo = document.querySelector("main");
+  let texto = conteudo.innerText;
 
-      let fala = new SpeechSynthesisUtterance(texto);
+  let fala = new SpeechSynthesisUtterance(texto);
 
-      fala.lang = "pt-BR";
-      fala.rate = 0.9;
-      fala.onend = finalizarLeitura;
+  fala.lang = "pt-BR";
+  fala.rate = 0.9;
+  
+  // Quando a leitura terminar sozinha, atualiza o status
+  fala.onend = function() {
+    lendo = false;
+  };
 
-      window.speechSynthesis.speak(fala);
-      lendo = true;
-    }
+  window.speechSynthesis.speak(fala);
+  lendo = true;
+}
 
-    function finalizarLeitura() {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-      lendo = false;
-    }
+function finalizarLeitura() {
+  if ('speechSynthesis' in window) {
+    // Interrompe imediatamente o áudio em andamento
+    window.speechSynthesis.cancel();
+  }
+  lendo = false;
+}
   </script>
 </body>
 </html>
